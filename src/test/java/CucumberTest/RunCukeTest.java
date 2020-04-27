@@ -10,7 +10,7 @@ import io.cucumber.junit.Cucumber;
         glue = {"classpath:com.jechrz.defs", "classpath:com.jechrz.defs0"} ,
         monochrome = true,
         strict = true,
-        tags = {"tag0", "@tag1"}
+        tags = {"@tag1", "tag2"}
 )
 
 public class RunCukeTest {
