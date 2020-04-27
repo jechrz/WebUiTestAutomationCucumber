@@ -4,6 +4,7 @@ import Base.BaseUtil;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.And;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 
 
@@ -35,11 +36,12 @@ public class LoginStepDefs extends BaseUtil {
             base.getDriver().findElement(By.xpath("//*[@id='SubmitLogin']/span")).click();
         }
 
-        @Then("^User should see the my account page$")
+        @Then("^User is on my account page$")
         public void i_should_see_the_userform_page(){
 
-            String check = base.getDriver().findElement(By.xpath("//*[@id=\'columns\']/div[1]/span[2]")).getText();
-            check.toLowerCase().equals( "my account" );
+            Assert.assertEquals(base.getDriver()
+                    .findElement(By.xpath("//*[@id=\'columns\']/div[1]/span[2]"))
+                        .getText().toLowerCase(), "my account");
         }
 }
 
