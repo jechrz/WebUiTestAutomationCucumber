@@ -1,7 +1,6 @@
 package com.jechrz.defs;
 
 import Base.BaseUtil;
-import Base.UserInfo;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -15,8 +14,6 @@ import java.util.Map;
 public class UpdatePersonalinfo extends BaseUtil {
 
     private BaseUtil base;
-
-    private UserInfo userInfo;
 
     public UpdatePersonalinfo(BaseUtil base) {
         this.base = base;
@@ -97,12 +94,11 @@ public class UpdatePersonalinfo extends BaseUtil {
 
         List<Map<String, String>> userData = tableX.asMaps(String.class, String.class);
 
-        userInfo = new UserInfo();
 
         for (int i=0; i< userData.size(); i++){
-            userInfo.setFirstName(userData.get(i).get("First Name"));
-            userInfo.setLastName(userData.get(i).get("Last Name"));
-            userInfo.setEmail(userData.get(i).get("Email Address"));
+            base.getUserInfo().setFirstName(userData.get(i).get("First Name"));
+            base.getUserInfo().setLastName(userData.get(i).get("Last Name"));
+            base.getUserInfo().setEmail(userData.get(i).get("Email Address"));
         }
 
         base.getDriver()
@@ -117,14 +113,15 @@ public class UpdatePersonalinfo extends BaseUtil {
 
         base.getDriver()
                 .findElement(By.xpath("//*[@id=\'firstname\']"))
-                    .sendKeys(userInfo.getFirstName());
+                    .sendKeys( base.getUserInfo().getFirstName());
         base.getDriver()
                 .findElement(By.xpath("//*[@id=\'lastname\']"))
-                    .sendKeys(userInfo.getLastName());
+                    .sendKeys( base.getUserInfo().getLastName());
         base.getDriver()
                 .findElement(By.xpath("//*[@id=\'email\']"))
-                    .sendKeys(userInfo.getEmail());
+                    .sendKeys( base.getUserInfo().getEmail());
 
     }
+
 
 }
