@@ -32,11 +32,16 @@ public class UpdatePersonalinfo extends BaseUtil {
     @Then("User is on personal information page")
     public void user_is_on_personal_information_page() {
 
-        String check1 = base.getDriver()
-                .findElement(By.xpath("/html/body/div[1]/div[2]/div/div[3]/div/div/h1"))
-                    .getText ();
-        check1.toLowerCase()
-                .equals("your personal information");
+        Assert.assertEquals("your personal information",
+                base.getDriver()
+                        .findElement(By.xpath("/html/body/div[1]/div[2]/div/div[3]/div/div/h1"))
+                            .getText().toLowerCase());
+
+//        String check1 = base.getDriver()
+//                .findElement(By.xpath("/html/body/div[1]/div[2]/div/div[3]/div/div/h1"))
+//                    .getText ();
+//        check1.toLowerCase()
+//                .equals("your personal information");
     }
 
     @Given("Social title radio buttons are visible to user")
@@ -84,9 +89,10 @@ public class UpdatePersonalinfo extends BaseUtil {
     @Then("User's personal information is updated")
     public void user_s_personal_information_is_updated() {
 
-        Assert.assertEquals(base.getDriver()
-                .findElement(By.xpath("//*[@id=\"center_column\"]/div/p"))
-                    .getText().toLowerCase(), "your personal information has been successfully updated.");
+        Assert.assertEquals("your personal information has been successfully updated.",
+                base.getDriver()
+                    .findElement(By.xpath("//*[@id=\"center_column\"]/div/p"))
+                        .getText().toLowerCase());
     }
 
     @When("User enters the following for his\\/her updated first name, last name and email")
@@ -96,9 +102,12 @@ public class UpdatePersonalinfo extends BaseUtil {
 
 
         for (int i=0; i< userData.size(); i++){
-            base.getUserInfo().setFirstName(userData.get(i).get("First Name"));
-            base.getUserInfo().setLastName(userData.get(i).get("Last Name"));
-            base.getUserInfo().setEmail(userData.get(i).get("Email Address"));
+            base.getUserInfo()
+                    .setFirstName(userData.get(i).get("First Name"));
+            base.getUserInfo()
+                    .setLastName(userData.get(i).get("Last Name"));
+            base.getUserInfo()
+                    .setEmail(userData.get(i).get("Email Address"));
         }
 
         base.getDriver()

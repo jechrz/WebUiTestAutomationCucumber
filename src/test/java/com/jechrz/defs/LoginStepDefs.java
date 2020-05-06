@@ -42,9 +42,10 @@ public class LoginStepDefs extends BaseUtil {
     @Then("^User is on my account page$")
     public void i_should_see_the_userform_page(){
 
-        Assert.assertEquals(base.getDriver()
-                .findElement(By.xpath("//*[@id=\'columns\']/div[1]/span[2]"))
-                .getText().toLowerCase(), "my account");
+        Assert.assertEquals("my account",
+                base.getDriver()
+                    .findElement(By.xpath("//*[@id=\'columns\']/div[1]/span[2]"))
+                        .getText().toLowerCase());
     }
 
 
