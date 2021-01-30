@@ -1,4 +1,4 @@
-@tag1
+@tag2
 Feature: UpdatePersonalinfoFeature
   This feature deals with updating a signed in user's social title
 

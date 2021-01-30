@@ -1,4 +1,4 @@
-@tag0
+@tag1
 Feature: LoginFeature
   This feature deals with the login functionality of the web application
 
@@ -6,4 +6,4 @@ Feature: LoginFeature
     Given User navigate to the login page
     And User enter the username as "automationtestuser613@gmail.com" and password as "G3thyphy!?!"
     And User clicks login button
-    Then User should see the my account page
+    Then User is on my account page
